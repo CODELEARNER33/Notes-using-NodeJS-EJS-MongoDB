@@ -1,0 +1,110 @@
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+  <div class="row mb-4">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/dashboard" class="text-decoration-none link-secondary"
+              >Dashboard</a
+            >
+          </li>
+          <li class="breadcrumb-item"><%= note.title %></li>
+        </ol>
+      </nav>
+
+      <div class="col d-flex justify-content-between align-item-center">
+        <h1 class="h3">View Notes</h1>
+
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <form
+    action="/dashboard/item/<%= noteID %>?_method=PUT"
+    method="post"
+    class="position-relative"
+  >
+    <div
+      class="form-group mb-4 position-absolute"
+      style="left: 1px; top: 1px; right: 1px"
+    >
+      <input
+        type="text"
+        class="form-control fw-bold border-0 fs-4"
+        id="title"
+        name="title"
+        value="<%= note.title %>"
+        placeholder="Title"
+      />
+    </div>
+
+    <div class="form-group mb-4">
+      <textarea
+        class="form-control pt-5 fs-4"
+        name="body"
+        id="body"
+        placeholder="Take a note..."
+        rows="12"
+      >
+<%= note.body %></textarea
+      >
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-dark btn-lg">Update</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Do you really wanna delete your
+          <b class="fw-bold">"<%= note.title %>"</b> note..!?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+
+        <form
+          action="/dashboard/item-delete/<%= noteID %>?_method=DELETE"
+          method="POST"
+          class="position-relative"
+        >
+          <button type="submit" class="btn btn-dark">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ?_method=DELETE overwrites the assinged method PUT and sends the delete request to the serve to handle same for PUT mehtod -->

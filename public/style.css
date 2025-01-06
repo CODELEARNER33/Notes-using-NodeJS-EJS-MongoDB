@@ -1,0 +1,49 @@
+:root {
+  --background-color: #d1e5f4;
+  --bs-primary-rgb: #000000;
+}
+
+body {
+  font-family: "Athiti";
+  background-color: var(--background-color);
+  color: var(--bs-primary-rgb);
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins" sans-serif;
+  font-weight: 800;
+}
+
+.container-fluid-custom {
+  max-width: 1600px;
+}
+
+/* Buttons */
+.btn {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  border-radius: 2rem;
+}
+
+/* navbar */
+.nav-link {
+  font-weight: 500;
+}
+
+/* Home */
+@media (min-width: 1200px) {
+  .home {
+    background: var(--background-color)
+                url("/images/woman.png") left bottom no-repeat,
+                url("/images/man.png") right bottom no-repeat;
+    background-size: auto, auto; /* Ensure background images size correctly */
+  }
+}
+
